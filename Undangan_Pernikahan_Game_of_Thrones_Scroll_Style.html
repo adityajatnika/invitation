@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titah Pernikahan Agung - Dinar Amaliah & Aditya Jatnika</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Medieval & Renaissance Serif Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;700;900&family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        parchment: {
+                            base: '#f4ecd8',
+                            light: '#fdfbf7',
+                            dark: '#e5d3b3',
+                            shadow: '#c5b089',
+                            border: '#8c6d46',
+                            ink: '#2b1b10',
+                            inkLight: '#4a3525',
+                            wax: '#8b1a1a',
+                            waxDark: '#5c0f0f',
+                            gold: '#b8860b',
+                            goldLight: '#daa520'
+                        }
+                    },
+                    fontFamily: {
+                        gothic: ['"UnifrakturMaguntia"', 'serif'],
+                        cinzel: ['"Cinzel"', 'serif'],
+                        cinzelDeco: ['"Cinzel Decorative"', 'serif'],
+                        fell: ['"IM Fell English"', 'serif'],
+                        serif: ['"Cormorant Garamond"', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Classic Parchment & Wax Seal Styling */
+        body {
+            background-color: #1a1410;
+            background-image: radial-gradient(#3a271d 1px, transparent 1px), radial-gradient(#261810 1px, #1a1410 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            color: #2b1b10;
+        }
+
+        .parchment-card {
+            background: #f4ecd8;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.05) 100%),
+                linear-gradient(to bottom, #f7f1e1 0%, #ede0c4 100%);
+            border: 2px solid #8c6d46;
+            box-shadow: 
+                0 0 0 4px #2b1b10,
+                0 0 0 6px #8c6d46,
+                0 15px 35px rgba(0, 0, 0, 0.8),
+                inset 0 0 40px rgba(140, 109, 70, 0.3);
+            position: relative;
+        }
+
+        /* Aged Scroll Border Corners */
+        .corner-ornament {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            border: 2px solid #8c6d46;
+            pointer-events: none;
+        }
+        .top-left { top: 6px; left: 6px; border-right: none; border-bottom: none; }
+        .top-right { top: 6px; right: 6px; border-left: none; border-bottom: none; }
+        .bottom-left { bottom: 6px; left: 6px; border-right: none; border-top: none; }
+        .bottom-right { bottom: 6px; right: 6px; border-left: none; border-top: none; }
+
+        /* Wax Seal Button */
+        .wax-seal {
+            background: radial-gradient(circle at 35% 35%, #a82424 0%, #8b1a1a 50%, #5c0f0f 100%);
+            border: 3px double #d2b78a;
+            box-shadow: 
+                0 6px 15px rgba(0,0,0,0.6),
+                inset 0 2px 5px rgba(255,255,255,0.3),
+                inset 0 -4px 8px rgba(0,0,0,0.5);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .wax-seal:hover {
+            transform: scale(1.08) rotate(3deg);
+            box-shadow: 
+                0 10px 25px rgba(139, 26, 26, 0.6),
+                inset 0 2px 5px rgba(255,255,255,0.4),
+                inset 0 -4px 8px rgba(0,0,0,0.6);
+        }
+
+        /* Gold Foil & Ink Text Gradient */
+        .gold-ink {
+            background: linear-gradient(135deg, #7a5c12 0%, #b8860b 40%, #5c4309 70%, #8b6508 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .iron-ink-border {
+            border-color: #4a3525;
+        }
+
+        /* Glassmorphism for Parchment Floating Controls */
+        .parchment-glass {
+            background: rgba(244, 236, 216, 0.9);
+            backdrop-filter: blur(8px);
+            border: 2px solid #8c6d46;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        }
+
+        /* Custom Parchment Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1410;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8c6d46;
+            border: 2px solid #1a1410;
+            border-radius: 4px;
+        }
+
+        /* Flame / Torch Pulse Effect */
+        @keyframes torchGlow {
+            0%, 100% { opacity: 0.8; filter: drop-shadow(0 0 8px rgba(184, 134, 11, 0.6)); }
+            50% { opacity: 1; filter: drop-shadow(0 0 18px rgba(218, 165, 32, 0.9)); }
+        }
+        .pulse-torch {
+            animation: torchGlow 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="font-fell text-parchment-ink antialiased overflow-x-hidden selection:bg-parchment-wax selection:text-white">
+
+    <!-- CONFIGURATION SCRIPT (EASY TO CHANGE DATA HERE) -->
+    <script>
+        const WEDDING_CONFIG = {
+            groomName: "Aditya Jatnika",
+            groomTitle: "Putra Pertama dari Akhmad Husen & Titin Kustini",
+            groomPhoto: "src/img/groom.png",
+            
+            brideName: "Dinar Amaliah",
+            brideTitle: "Putri Kedua dari Rudiana & Nur",
+            bridePhoto: "src/img/bride.jpeg",
+            
+            weddingDate: "2026-12-12T09:00:00", // Format YYYY-MM-DDTHH:mm:ss
+            weddingDateDisplay: "Sabtu, 12 Desember 2026",
+            weddingTimeDisplay: "09.00 WIB - Selesai",
+            
+            venueName: "Hotel Santika Grand Ballroom",
+            venueAddress: "Jl. Yudanegara No. 57, Yudanagara, Kec. Cihideung, Kota Tasikmalaya, Jawa Barat 46121",
+            googleMapsUrl: "https://maps.app.goo.gl/1fTxF5PQypz1zUfN8",
+
+            whatsappNumber: "6281223277612", // Nomor WhatsApp penerima RSVP
+
+            bankDetails: [
+                { bank: "Bank BCA", number: "0542009011", name: "Aditya Akhmad Dinan Jatnika" },
+                { bank: "Bank BCA", number: "0542230043", name: "Dinar Amaliah" }
+            ],
+
+            // Musik Latar Tema Kerajaan Classic / Medieval
+            audioUrl: "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=wedding-march-royal-orchestra-112347.mp3"
+        };
+    </script>
+
+    <!-- Floating Audio Control & Scroll Top -->
+    <div id="floating-controls" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 hidden">
+        <button id="music-toggle" onclick="toggleAudio()" class="w-12 h-12 parchment-glass rounded-full flex items-center justify-center text-parchment-ink hover:scale-110 transition-transform duration-300">
+            <i id="music-icon" class="fas fa-music text-lg animate-spin" style="animation-duration: 5s;"></i>
+        </button>
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="w-12 h-12 parchment-glass rounded-full flex items-center justify-center text-parchment-ink hover:scale-110 transition-transform duration-300">
+            <i class="fas fa-chevron-up text-lg"></i>
+        </button>
+    </div>
+
+    <!-- Background Audio Element -->
+    <audio id="bg-music" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=wedding-march-royal-orchestra-112347.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- HERO / COVER SECTION (SEALED ROYAL SCROLL MODAL) -->
+    <section id="cover" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 px-4 transition-opacity duration-1000">
+        <div class="max-w-xl w-full text-center p-8 md:p-10 rounded-lg parchment-card relative overflow-hidden" data-aos="zoom-in">
+            <!-- Scroll Corner Ornaments -->
+            <div class="corner-ornament top-left"></div>
+            <div class="corner-ornament top-right"></div>
+            <div class="corner-ornament bottom-left"></div>
+            <div class="corner-ornament bottom-right"></div>
+
+            <!-- Crown & Shield Sigil Header -->
+            <div class="mb-4 flex justify-center">
+                <svg class="w-20 h-20 text-parchment-gold pulse-torch" viewBox="0 0 100 100" fill="currentColor">
+                    <!-- Medieval Shield Crest -->
+                    <path d="M50,5 L85,20 L85,55 C85,75 50,95 50,95 C50,95 15,75 15,55 L15,20 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+                    <path d="M50,15 L50,85 M20,40 L80,40" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="35" cy="28" r="4" fill="currentColor"/>
+                    <circle cx="65" cy="28" r="4" fill="currentColor"/>
+                    <path d="M50,22 L56,35 L70,35 L58,43 L63,56 L50,47 L37,56 L42,43 L30,35 L44,35 Z" fill="currentColor"/>
+                </svg>
+            </div>
+
+            <p class="font-gothic text-xl text-parchment-ink mb-1">Titah Kerajaan Agung</p>
+            <p class="font-cinzel text-xs uppercase tracking-[0.3em] text-parchment-inkLight font-bold mb-4">Royal Decree of Holy Matrimony</p>
+            
+            <h1 class="font-cinzelDeco text-3xl md:text-5xl font-extrabold gold-ink mb-3 leading-tight">
+                Dinar <span class="font-gothic text-3xl md:text-4xl text-parchment-wax font-normal block my-1">&amp;</span> Aditya
+            </h1>
+            
+            <p class="text-xs md:text-sm text-parchment-inkLight italic mb-6 font-serif">
+                "Diberitahukan kepada seluruh penjuru negeri, atas Rahmat Tuhan Yang Maha Esa, Titah Pernikahan Agung Dua Wangsa telah ditetapkan."
+            </p>
+
+            <div id="guest-name-box" class="mb-8 p-4 bg-parchment-dark/50 border border-parchment-border rounded relative">
+                <p class="font-cinzel text-[10px] uppercase text-parchment-inkLight tracking-widest mb-1">Penerima Titah Kehormatan:</p>
+                <h3 id="recipient-name" class="font-cinzel text-lg md:text-xl font-bold text-parchment-ink tracking-wide">Bapak Anies Baswedan</h3>
+                <span id="recipient-tag" class="inline-block mt-2 text-[10px] font-cinzel px-3 py-0.5 bg-parchment-wax text-parchment-light rounded border border-parchment-border uppercase tracking-wider">Tamu Kehormatan</span>
+            </div>
+
+            <!-- Wax Seal Button to Open Scroll -->
+            <div class="flex flex-col items-center justify-center">
+                <button onclick="openInvitation()" class="wax-seal w-28 h-28 rounded-full flex flex-col items-center justify-center text-parchment-light cursor-pointer group">
+                    <i class="fas fa-crown text-2xl mb-1 text-parchment-goldLight group-hover:rotate-12 transition-transform"></i>
+                    <span class="font-cinzel text-[10px] font-bold tracking-widest uppercase text-center leading-tight">Buka<br>Titah</span>
+                </button>
+                <p class="text-[10px] font-cinzel uppercase text-parchment-inkLight tracking-widest mt-3">Ketuk Stempel Lilin Kerajaan</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT SCROLL CONTAINER (Hidden until seal is broken) -->
+    <main id="main-content" class="opacity-0 transition-opacity duration-1000">
+
+        <!-- HEADER BANNER / ANCIENT ROYAL DECREE -->
+        <header class="min-h-screen flex flex-col justify-center items-center text-center p-6 relative border-b-4 border-parchment-border">
+            <div class="max-w-4xl mx-auto parchment-card p-8 md:p-16 my-8 rounded-lg relative shadow-2xl" data-aos="fade-up">
+                <div class="corner-ornament top-left"></div>
+                <div class="corner-ornament top-right"></div>
+                <div class="corner-ornament bottom-left"></div>
+                <div class="corner-ornament bottom-right"></div>
+
+                <div class="flex justify-center mb-4">
+                    <i class="fas fa-chess-king text-4xl text-parchment-gold pulse-torch"></i>
+                </div>
+                
+                <h2 class="font-gothic text-2xl md:text-3xl text-parchment-wax mb-2">Wangsa Dinar &amp; Aditya</h2>
+                <h1 class="font-cinzelDeco text-3xl md:text-6xl font-bold gold-ink mb-4">Titah Pernikahan</h1>
+                <p id="header-date" class="font-cinzel text-base md:text-xl font-bold text-parchment-ink tracking-widest uppercase mb-8 border-y border-parchment-border py-2">Sabtu, 12 Desember 2026</p>
+
+                <!-- Countdown Clock (Medieval Style) -->
+                <p class="font-cinzel text-xs uppercase tracking-widest text-parchment-inkLight mb-3">Menghitung Hari Menuju Prosesi Agung:</p>
+                <div class="grid grid-cols-4 gap-2 md:gap-4 max-w-md mx-auto mb-8">
+                    <div class="bg-parchment-dark/60 border border-parchment-border p-3 rounded text-center">
+                        <span id="cd-days" class="block font-cinzel text-2xl md:text-3xl font-bold text-parchment-wax">00</span>
+                        <span class="text-[9px] font-cinzel uppercase tracking-widest text-parchment-inkLight">Hari</span>
+                    </div>
+                    <div class="bg-parchment-dark/60 border border-parchment-border p-3 rounded text-center">
+                        <span id="cd-hours" class="block font-cinzel text-2xl md:text-3xl font-bold text-parchment-wax">00</span>
+                        <span class="text-[9px] font-cinzel uppercase tracking-widest text-parchment-inkLight">Jam</span>
+                    </div>
+                    <div class="bg-parchment-dark/60 border border-parchment-border p-3 rounded text-center">
+                        <span id="cd-minutes" class="block font-cinzel text-2xl md:text-3xl font-bold text-parchment-wax">00</span>
+                        <span class="text-[9px] font-cinzel uppercase tracking-widest text-parchment-inkLight">Menit</span>
+                    </div>
+                    <div class="bg-parchment-dark/60 border border-parchment-border p-3 rounded text-center">
+                        <span id="cd-seconds" class="block font-cinzel text-2xl md:text-3xl font-bold text-parchment-wax">00</span>
+                        <span class="text-[9px] font-cinzel uppercase tracking-widest text-parchment-inkLight">Detik</span>
+                    </div>
+                </div>
+                
+                <a href="#couple" class="inline-block animate-bounce text-parchment-wax text-2xl">
+                    <i class="fas fa-scroll"></i>
+                </a>
+            </div>
+        </header>
+
+        <!-- COUPLE PROFILES SECTION -->
+        <section id="couple" class="py-16 px-4 max-w-5xl mx-auto">
+            <div class="parchment-card p-8 md:p-12 rounded-lg">
+                <div class="corner-ornament top-left"></div>
+                <div class="corner-ornament top-right"></div>
+                <div class="corner-ornament bottom-left"></div>
+                <div class="corner-ornament bottom-right"></div>
+
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <i class="fas fa-[#8b1a1a] fa-ring text-2xl text-parchment-wax mb-2"></i>
+                    <h2 class="font-cinzel text-2xl md:text-4xl font-bold gold-ink mb-2">Mempelai Kerajaan</h2>
+                    <p class="max-w-xl mx-auto text-parchment-inkLight text-xs md:text-sm italic font-serif">
+                        "Dan di antara tanda-tanda kebesaran-Nya diciptakan-Nya pasangan untukmu dari jenismu sendiri agar kamu merasa tenteram dan diikat kasih sayang yang abadi."
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                    <!-- Groom Card -->
+                    <div class="text-center p-6 bg-parchment-dark/40 border border-parchment-border rounded" data-aos="fade-right">
+                        <div class="w-44 h-44 md:w-52 md:h-52 mx-auto rounded-full p-2 bg-parchment-dark border-2 border-parchment-border mb-4 shadow-md">
+                            <img id="groom-img" src="" alt="Aditya Jatnika" class="w-full h-full object-cover rounded-full border border-parchment-border">
+                        </div>
+                        <h3 id="groom-name" class="font-cinzel text-xl md:text-2xl font-bold text-parchment-wax mb-1">Aditya Jatnika</h3>
+                        <p id="groom-title" class="text-xs md:text-sm text-parchment-inkLight mb-4 italic">Putra Pertama dari Akhmad Husen &amp; Titin Kustini</p>
+                        <div class="flex justify-center space-x-4 text-parchment-ink text-sm">
+                            <a href="#" class="hover:text-parchment-wax transition"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="hover:text-parchment-wax transition"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Bride Card -->
+                    <div class="text-center p-6 bg-parchment-dark/40 border border-parchment-border rounded" data-aos="fade-left">
+                        <div class="w-44 h-44 md:w-52 md:h-52 mx-auto rounded-full p-2 bg-parchment-dark border-2 border-parchment-border mb-4 shadow-md">
+                            <img id="bride-img" src="" alt="Dinar Amaliah" class="w-full h-full object-cover rounded-full border border-parchment-border">
+                        </div>
+                        <h3 id="bride-name" class="font-cinzel text-xl md:text-2xl font-bold text-parchment-wax mb-1">Dinar Amaliah</h3>
+                        <p id="bride-title" class="text-xs md:text-sm text-parchment-inkLight mb-4 italic">Putri Kedua dari Rudiana &amp; Nur</p>
+                        <div class="flex justify-center space-x-4 text-parchment-ink text-sm">
+                            <a href="#" class="hover:text-parchment-wax transition"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="hover:text-parchment-wax transition"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EVENT DETAILS & DRESS CODE -->
+        <section id="events" class="py-16 px-4 max-w-5xl mx-auto">
+            <div class="parchment-card p-8 md:p-12 rounded-lg">
+                <div class="corner-ornament top-left"></div>
+                <div class="corner-ornament top-right"></div>
+                <div class="corner-ornament bottom-left"></div>
+                <div class="corner-ornament bottom-right"></div>
+
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <i class="fas fa-shield-halved text-2xl text-parchment-wax mb-2"></i>
+                    <h2 class="font-cinzel text-2xl md:text-4xl font-bold gold-ink mb-2">Agenda Resepsi Agung</h2>
+                    <p class="text-parchment-inkLight text-xs md:text-sm">Kehadiran Yang Mulia Adalah Kehormatan Bagi Wangsa Kami</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <!-- Akad / Ceremonial Decree -->
+                    <div class="p-6 bg-parchment-dark/40 border-l-4 border-l-parchment-wax border border-parchment-border rounded" data-aos="zoom-in-up">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <i class="fas fa-scroll text-2xl text-parchment-wax"></i>
+                            <div>
+                                <h3 class="font-cinzel text-lg font-bold text-parchment-ink">Akad / Pemberkatan Royal</h3>
+                                <p class="text-[10px] font-cinzel text-parchment-wax uppercase tracking-widest">Prosesi Suci Karajaan</p>
+                            </div>
+                        </div>
+                        <ul class="space-y-2 text-xs md:text-sm text-parchment-ink border-t border-parchment-border/50 pt-3">
+                            <li class="flex items-center"><i class="far fa-calendar-alt w-5 text-parchment-wax"></i> <span id="event-date-1">Sabtu, 12 Desember 2026</span></li>
+                            <li class="flex items-center"><i class="far fa-clock w-5 text-parchment-wax"></i> <span>09.00 WIB - Selesai</span></li>
+                            <li class="flex items-start"><i class="fas fa-map-marker-alt w-5 text-parchment-wax mt-0.5"></i> <span id="event-venue-1">Hotel Santika Grand Ballroom</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Grand Reception -->
+                    <div class="p-6 bg-parchment-dark/40 border-l-4 border-l-parchment-wax border border-parchment-border rounded" data-aos="zoom-in-up" data-aos-delay="100">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <i class="fas fa-[#8b1a1a] fa-wine-glass text-2xl text-parchment-wax"></i>
+                            <div>
+                                <h3 class="font-cinzel text-lg font-bold text-parchment-ink">Resepsi Agung Kerajaan</h3>
+                                <p class="text-[10px] font-cinzel text-parchment-wax uppercase tracking-widest">Perayaan Utama</p>
+                            </div>
+                        </div>
+                        <ul class="space-y-2 text-xs md:text-sm text-parchment-ink border-t border-parchment-border/50 pt-3">
+                            <li class="flex items-center"><i class="far fa-calendar-alt w-5 text-parchment-wax"></i> <span id="event-date-2">Sabtu, 12 Desember 2026</span></li>
+                            <li class="flex items-center"><i class="far fa-clock w-5 text-parchment-wax"></i> <span id="event-time-2">11.00 WIB - Selesai</span></li>
+                            <li class="flex items-start"><i class="fas fa-map-marker-alt w-5 text-parchment-wax mt-0.5"></i> <span id="event-venue-2">Hotel Santika Grand Ballroom</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Dresscode & Venue Map Button -->
+                <div class="p-6 bg-parchment-dark/60 border border-parchment-border rounded text-center max-w-2xl mx-auto" data-aos="fade-up">
+                    <h4 class="font-cinzel text-base font-bold text-parchment-wax mb-2"><i class="fas fa-[#8b1a1a] fa-user-tie mr-2"></i>Ketentuan Pakaian (Dress Code)</h4>
+                    <p class="text-xs md:text-sm text-parchment-inkLight mb-4 font-serif">
+                        Demi keanggunan perayaan Kerajaan, para tamu undangan disarankan mengenakan pakaian formal/kebaya atau jas resmi bernuansa warna <strong class="text-parchment-wax">Gold, Dark Bronze, Cream, atau Black Tie</strong>.
+                    </p>
+                    
+                    <a id="gmaps-link" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-2.5 bg-parchment-wax hover:bg-parchment-waxDark text-parchment-light font-cinzel font-bold text-xs uppercase tracking-widest rounded transition shadow">
+                        <i class="fas fa-map-marked-alt mr-2"></i> Buka Peta Lokasi (Google Maps)
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALLERY & MEMORIES -->
+        <section id="gallery" class="py-16 px-4 max-w-5xl mx-auto">
+            <div class="parchment-card p-8 md:p-12 rounded-lg">
+                <div class="corner-ornament top-left"></div>
+                <div class="corner-ornament top-right"></div>
+                <div class="corner-ornament bottom-left"></div>
+                <div class="corner-ornament bottom-right"></div>
+
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <i class="fas fa-images text-2xl text-parchment-wax mb-2"></i>
+                    <h2 class="font-cinzel text-2xl md:text-4xl font-bold gold-text mb-2">Dokumentasi Wangsa</h2>
+                    <p class="text-parchment-inkLight text-xs md:text-sm">Potret Perjalanan Cinta Aditya &amp; Dinar</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" data-aos="fade-up">
+                    <div class="group relative overflow-hidden rounded border border-parchment-border h-64 bg-parchment-dark">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=600" alt="Gallery 1" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 sepia contrast-125">
+                        <div class="absolute inset-0 bg-gradient-to-t from-parchment-ink/80 via-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-3">
+                            <span class="text-xs text-parchment-light font-cinzel">Pertemuan Pertama</span>
+                        </div>
+                    </div>
+                    <div class="group relative overflow-hidden rounded border border-parchment-border h-64 bg-parchment-dark">
+                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=600" alt="Gallery 2" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 sepia contrast-125">
+                        <div class="absolute inset-0 bg-gradient-to-t from-parchment-ink/80 via-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-3">
+                            <span class="text-xs text-parchment-light font-cinzel">Lamaran Kerajaan</span>
+                        </div>
+                    </div>
+                    <div class="group relative overflow-hidden rounded border border-parchment-border h-64 bg-parchment-dark">
+                        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=600" alt="Gallery 3" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 sepia contrast-125">
+                        <div class="absolute inset-0 bg-gradient-to-t from-parchment-ink/80 via-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-3">
+                            <span class="text-xs text-parchment-light font-cinzel">Potret Pre-Wedding</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP SECTION -->
+        <section id="rsvp" class="py-16 px-4 max-w-4xl mx-auto">
+            <div class="parchment-card p-8 md:p-12 rounded-lg" data-aos="zoom-in">
+                <div class="corner-ornament top-left"></div>
+                <div class="corner-ornament top-right"></div>
+                <div class="corner-ornament bottom-left"></div>
+                <div class="corner-ornament bottom-right"></div>
+
+                <div class="text-center mb-10">
+                    <i class="fas fa-feather-pointed text-2xl text-parchment-wax mb-2"></i>
+                    <h2 class="font-cinzel text-2xl md:text-4xl font-bold gold-ink mb-2">Konfirmasi Kehadiran (RSVP)</h2>
+                    <p class="text-parchment-inkLight text-xs md:text-sm">Pernyataan Resmi Kehadiran Utusan &amp; Keluarga</p>
+                </div>
+
+                <form id="rsvp-form" onsubmit="handleRSVP(event)" class="space-y-5">
+                    <!-- Nama Keluarga / Tamu Utama -->
+                    <div>
+                        <label class="block font-cinzel text-xs font-bold uppercase text-parchment-ink mb-1">Nama Utusan / Tamu Kehormatan *</label>
+                        <input type="text" id="rsvp-family-name" required placeholder="Contoh: Lord / Lady Herman Wijaya" class="w-full px-4 py-2.5 bg-parchment-light border border-parchment-border rounded text-parchment-ink focus:outline-none focus:ring-1 focus:ring-parchment-wax font-serif">
+                    </div>
+
+                    <!-- Status Kehadiran -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block font-cinzel text-xs font-bold uppercase text-parchment-ink mb-1">Status Kehadiran *</label>
+                            <select id="rsvp-status" required class="w-full px-4 py-2.5 bg-parchment-light border border-parchment-border rounded text-parchment-ink focus:outline-none focus:ring-1 focus:ring-parchment-wax font-serif">
+                                <option value="Hadir">Hadir dengan Penuh Suka Cita</option>
+                                <option value="Tidak Hadir">Mohon Maaf, Halangan Hadir</option>
+                            </select>
+                        </div>
+
+                        <!-- Jumlah Anggota -->
+                        <div>
+                            <label class="block font-cinzel text-xs font-bold uppercase text-parchment-ink mb-1">Jumlah Anggota Rombongan *</label>
+                            <input type="number" id="rsvp-family-count" min="1" max="10" value="1" required class="w-full px-4 py-2.5 bg-parchment-light border border-parchment-border rounded text-parchment-ink focus:outline-none focus:ring-1 focus:ring-parchment-wax font-serif">
+                        </div>
+                    </div>
+
+                    <!-- Plus One Option -->
+                    <div class="p-4 bg-parchment-dark/50 border border-parchment-border rounded space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="font-cinzel text-xs font-bold uppercase text-parchment-ink">Membawa Pendamping (Plus-One)?</span>
+                            <div class="flex items-center space-x-4">
+                                <label class="inline-flex items-center cursor-pointer">
+                                    <input type="radio" name="plus_one_option" value="Ya" onchange="togglePlusOneInput(true)" class="text-parchment-wax focus:ring-parchment-wax">
+                                    <span class="ml-2 text-xs font-serif text-parchment-ink">Ya</span>
+                                </label>
+                                <label class="inline-flex items-center cursor-pointer">
+                                    <input type="radio" name="plus_one_option" value="Tidak" checked onchange="togglePlusOneInput(false)" class="text-parchment-wax focus:ring-parchment-wax">
+                                    <span class="ml-2 text-xs font-serif text-parchment-ink">Tidak</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="plus-one-container" class="hidden pt-2 border-t border-parchment-border/50">
+                            <label class="block font-cinzel text-xs font-bold uppercase text-parchment-ink mb-1">Nama Pendamping &amp; Keterangan</label>
+                            <input type="text" id="rsvp-plusone-name" placeholder="Contoh: Lady Amanda (Pasangan / Rekan)" class="w-full px-4 py-2.5 bg-parchment-light border border-parchment-border rounded text-parchment-ink focus:outline-none focus:ring-1 focus:ring-parchment-wax font-serif">
+                        </div>
+                    </div>
+
+                    <!-- Ucapan & Doa -->
+                    <div>
+                        <label class="block font-cinzel text-xs font-bold uppercase text-parchment-ink mb-1">Pesan &amp; Doa Restu Titah Kerajaan</label>
+                        <textarea id="rsvp-wishes" rows="4" placeholder="Tuliskan ucapan selamat & doa restu untuk kedua mempelai..." class="w-full px-4 py-2.5 bg-parchment-light border border-parchment-border rounded text-parchment-ink focus:outline-none focus:ring-1 focus:ring-parchment-wax font-serif"></textarea>
+                    </div>
+
+                    <!-- Submit Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 pt-3">
+                        <button type="submit" name="action" value="whatsapp" class="flex-1 py-3 px-6 bg-emerald-800 hover:bg-emerald-700 text-white font-cinzel text-xs font-bold uppercase tracking-widest rounded transition flex items-center justify-center space-x-2 shadow">
+                            <i class="fab fa-whatsapp text-base"></i>
+                            <span>Kirim via WhatsApp</span>
+                        </button>
+                        <button type="submit" name="action" value="local" class="flex-1 py-3 px-6 bg-parchment-wax hover:bg-parchment-waxDark text-parchment-light font-cinzel text-xs font-bold uppercase tracking-widest rounded transition flex items-center justify-center space-x-2 shadow">
+                            <i class="fas fa-book-bookmark text-base"></i>
+                            <span>Simpan di Buku Tamu</span>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Toggle Guestbook Panel -->
+                <div class="mt-8 text-center pt-4 border-t border-parchment-border/50">
+                    <button onclick="toggleGuestbook()" class="text-xs font-cinzel text-parchment-wax font-bold hover:underline">
+                        <i class="fas fa-list-ul mr-1"></i> Lihat Buku Tamu Kerajaan (Saved LocalStorage)
+                    </button>
+                </div>
+
+                <!-- Hidden Guestbook Panel -->
+                <div id="guestbook-panel" class="hidden mt-4 p-4 bg-parchment-dark/60 border border-parchment-border rounded max-h-60 overflow-y-auto">
+                    <h4 class="font-cinzel text-xs font-bold text-parchment-wax mb-3 text-center uppercase tracking-wider">Buku Tamu Kerajaan</h4>
+                    <div id="guestbook-entries" class="space-y-3 text-xs text-parchment-ink font-serif">
+                        <!-- Entries rendered here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIGITAL ENVELOPE / BANK DETAILS -->
+        <section id="gifts" class="py-16 px-4 max-w-4xl mx-auto">
+            <div class="parchment-card p-8 md:p-12 rounded-lg">
+                <div class="corner-ornament top-left"></div>
+                <div class="corner-ornament top-right"></div>
+                <div class="corner-ornament bottom-left"></div>
+                <div class="corner-ornament bottom-right"></div>
+
+                <div class="text-center mb-10" data-aos="fade-up">
+                    <i class="fas fa-coins text-2xl text-parchment-wax mb-2"></i>
+                    <h2 class="font-cinzel text-2xl md:text-4xl font-bold gold-ink mb-2">Amplop Digital Kerajaan</h2>
+                    <p class="text-parchment-inkLight text-xs md:text-sm max-w-lg mx-auto font-serif">
+                        Doa restu Anda adalah anugerah terbesar bagi kami. Namun apabila hendak memberikan tanda kasih, Anda dapat menyalurkannya melalui rekening berikut:
+                    </p>
+                </div>
+
+                <div id="bank-cards-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Bank cards injected via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="py-12 border-t-4 border-parchment-border text-center text-xs text-parchment-shadow bg-black">
+            <div class="max-w-xl mx-auto px-4">
+                <i class="fas fa-crown text-2xl text-parchment-gold mb-3"></i>
+                <p class="font-cinzel text-sm text-parchment-dark mb-1">Dinar &amp; Aditya Royal Decree</p>
+                <p class="mb-4 font-serif text-parchment-shadow">Terima Kasih Atas Kehadiran &amp; Doa Restu Yang Mulia Para Tamu Undangan</p>
+                <p class="text-[10px] text-gray-600 font-mono">Game of Thrones Scroll Theme &copy; 2026. Designed for GitHub Pages Serverless Deployment.</p>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- CUSTOM TOAST NOTIFICATION -->
+    <div id="toast" class="fixed top-5 right-5 z-50 transform translate-x-full transition-transform duration-300 parchment-glass border-2 border-parchment-border px-6 py-4 rounded text-parchment-ink flex items-center space-x-3 shadow-2xl">
+        <i id="toast-icon" class="fas fa-scroll text-xl text-parchment-wax"></i>
+        <span id="toast-message" class="text-sm font-serif">Pesan berhasil disimpan.</span>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Init AOS Animation Library
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Initialize UI with Config
+        document.addEventListener('DOMContentLoaded', () => {
+            // Fill Groom & Bride Details
+            document.getElementById('groom-img').src = WEDDING_CONFIG.groomPhoto;
+            document.getElementById('groom-name').innerText = WEDDING_CONFIG.groomName;
+            document.getElementById('groom-title').innerText = WEDDING_CONFIG.groomTitle;
+
+            document.getElementById('bride-img').src = WEDDING_CONFIG.bridePhoto;
+            document.getElementById('bride-name').innerText = WEDDING_CONFIG.brideName;
+            document.getElementById('bride-title').innerText = WEDDING_CONFIG.brideTitle;
+
+            // Fill Dates & Venues
+            document.getElementById('header-date').innerText = WEDDING_CONFIG.weddingDateDisplay;
+            document.getElementById('event-date-1').innerText = WEDDING_CONFIG.weddingDateDisplay;
+            document.getElementById('event-date-2').innerText = WEDDING_CONFIG.weddingDateDisplay;
+            document.getElementById('event-time-2').innerText = WEDDING_CONFIG.weddingTimeDisplay;
+            document.getElementById('event-venue-1').innerText = WEDDING_CONFIG.venueName;
+            document.getElementById('event-venue-2').innerText = WEDDING_CONFIG.venueName;
+            document.getElementById('gmaps-link').href = WEDDING_CONFIG.googleMapsUrl;
+
+            // Parse URL parameters for customized guest name (e.g. ?to=Bapak+Herman)
+            const urlParams = new URLSearchParams(window.location.search);
+            const guestName = urlParams.get('to');
+            if (guestName) {
+                document.getElementById('recipient-name').innerText = decodeURIComponent(guestName);
+                document.getElementById('rsvp-family-name').value = decodeURIComponent(guestName);
+            }
+
+            // Render Bank Details
+            renderBankCards();
+
+            // Start Countdown Clock
+            initCountdown();
+
+            // Load Saved Local RSVP Entries
+            renderGuestbookEntries();
+        });
+
+        // Open Scroll Animation & Audio Autoplay
+        function openInvitation() {
+            const cover = document.getElementById('cover');
+            const mainContent = document.getElementById('main-content');
+            const controls = document.getElementById('floating-controls');
+            const bgMusic = document.getElementById('bg-music');
+
+            cover.classList.add('opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                cover.style.display = 'none';
+            }, 1000);
+
+            mainContent.classList.remove('opacity-0');
+            controls.classList.remove('hidden');
+
+            // Play background music
+            bgMusic.play().catch(err => {
+                console.log("Autoplay blocked by browser. Music icon can be clicked.");
+                document.getElementById('music-icon').classList.remove('animate-spin');
+            });
+        }
+
+        // Toggle Audio Player
+        let isPlaying = true;
+        function toggleAudio() {
+            const bgMusic = document.getElementById('bg-music');
+            const musicIcon = document.getElementById('music-icon');
+
+            if (isPlaying) {
+                bgMusic.pause();
+                musicIcon.classList.remove('animate-spin');
+            } else {
+                bgMusic.play();
+                musicIcon.classList.add('animate-spin');
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Countdown Timer Logic
+        function initCountdown() {
+            const targetDate = new Date(WEDDING_CONFIG.weddingDate).getTime();
+
+            const timer = setInterval(() => {
+                const now = new Date().getTime();
+                const difference = targetDate - now;
+
+                if (difference < 0) {
+                    clearInterval(timer);
+                    document.getElementById('cd-days').innerText = "00";
+                    document.getElementById('cd-hours').innerText = "00";
+                    document.getElementById('cd-minutes').innerText = "00";
+                    document.getElementById('cd-seconds').innerText = "00";
+                    return;
+                }
+
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('cd-days').innerText = days < 10 ? '0' + days : days;
+                document.getElementById('cd-hours').innerText = hours < 10 ? '0' + hours : hours;
+                document.getElementById('cd-minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+                document.getElementById('cd-seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+            }, 1000);
+        }
+
+        // Plus-One Input Toggle
+        function togglePlusOneInput(show) {
+            const container = document.getElementById('plus-one-container');
+            if (show) {
+                container.classList.remove('hidden');
+            } else {
+                container.classList.add('hidden');
+                document.getElementById('rsvp-plusone-name').value = '';
+            }
+        }
+
+        // Handle RSVP Form Submission
+        function handleRSVP(event) {
+            event.preventDefault();
+            const submitter = event.submitter ? event.submitter.value : 'local';
+
+            const familyName = document.getElementById('rsvp-family-name').value.trim();
+            const status = document.getElementById('rsvp-status').value;
+            const familyCount = document.getElementById('rsvp-family-count').value;
+            const hasPlusOne = document.querySelector('input[name="plus_one_option"]:checked').value;
+            const plusOneName = document.getElementById('rsvp-plusone-name').value.trim();
+            const wishes = document.getElementById('rsvp-wishes').value.trim();
+
+            const rsvpData = {
+                id: Date.now(),
+                familyName,
+                status,
+                familyCount,
+                hasPlusOne,
+                plusOneName: hasPlusOne === 'Ya' ? plusOneName : '-',
+                wishes,
+                timestamp: new Date().toLocaleString('id-ID')
+            };
+
+            // Save to LocalStorage
+            saveRSVPToLocalStorage(rsvpData);
+
+            if (submitter === 'whatsapp') {
+                let message = `*KONFIRMASI RSVP TITAH KERASIAN*\n`;
+                message += `--------------------------------------\n`;
+                message += `*Nama Utusan / Tamu:* ${familyName}\n`;
+                message += `*Status Kehadiran:* ${status}\n`;
+                message += `*Jumlah Rombongan:* ${familyCount} Orang\n`;
+                message += `*Membawa Pendamping:* ${hasPlusOne}\n`;
+                if (hasPlusOne === 'Ya') {
+                    message += `*Nama Pendamping:* ${plusOneName || '-'}\n`;
+                }
+                if (wishes) {
+                    message += `*Pesan & Doa Restu:* ${wishes}\n`;
+                }
+                message += `--------------------------------------\n`;
+                message += `_Terkirim otomatis via Undangan Titah Kerajaan Dinar & Aditya_`;
+
+                const waUrl = `https://wa.me/${WEDDING_CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
+                window.open(waUrl, '_blank');
+                showToast("Membuka WhatsApp untuk mengirim konfirmasi...");
+            } else {
+                showToast("Konfirmasi RSVP Anda berhasil disimpan di Buku Tamu Kerajaan!");
+            }
+
+            renderGuestbookEntries();
+        }
+
+        // LocalStorage Helper Functions
+        function saveRSVPToLocalStorage(data) {
+            let entries = JSON.parse(localStorage.getItem('got_rsvp_entries') || '[]');
+            entries.unshift(data);
+            localStorage.setItem('got_rsvp_entries', JSON.stringify(entries));
+        }
+
+        function renderGuestbookEntries() {
+            const container = document.getElementById('guestbook-entries');
+            let entries = JSON.parse(localStorage.getItem('got_rsvp_entries') || '[]');
+
+            if (entries.length === 0) {
+                container.innerHTML = '<p class="text-center text-parchment-inkLight italic">Belum ada konfirmasi kehadiran yang tersimpan.</p>';
+                return;
+            }
+
+            container.innerHTML = entries.map(item => `
+                <div class="p-3 bg-parchment-light border border-parchment-border rounded">
+                    <div class="flex justify-between items-start mb-1">
+                        <strong class="font-cinzel text-parchment-wax">${escapeHtml(item.familyName)}</strong>
+                        <span class="text-[9px] px-2 py-0.5 font-cinzel rounded ${item.status === 'Hadir' ? 'bg-emerald-900 text-emerald-100' : 'bg-rose-950 text-rose-100'}">${item.status}</span>
+                    </div>
+                    <p class="text-[11px] text-parchment-ink">Rombongan: ${item.familyCount} orang | Plus One: ${escapeHtml(item.plusOneName)}</p>
+                    ${item.wishes ? `<p class="text-[11px] italic text-parchment-inkLight mt-1">"${escapeHtml(item.wishes)}"</p>` : ''}
+                    <span class="text-[9px] text-parchment-shadow block text-right mt-1 font-mono">${item.timestamp}</span>
+                </div>
+            `).join('');
+        }
+
+        function toggleGuestbook() {
+            const panel = document.getElementById('guestbook-panel');
+            panel.classList.toggle('hidden');
+        }
+
+        // Render Digital Envelope / Bank Cards
+        function renderBankCards() {
+            const container = document.getElementById('bank-cards-container');
+            container.innerHTML = WEDDING_CONFIG.bankDetails.map(item => `
+                <div class="p-6 bg-parchment-dark/40 border border-parchment-border rounded text-center relative" data-aos="zoom-in">
+                    <i class="fas fa-[#8b1a1a] fa-building-columns text-2xl text-parchment-wax mb-2"></i>
+                    <h3 class="font-cinzel text-base font-bold text-parchment-ink mb-1">${item.bank}</h3>
+                    <p class="text-xl font-mono text-parchment-wax font-bold tracking-wider my-2">${item.number}</p>
+                    <p class="text-xs text-parchment-inkLight mb-4 font-serif">a.n. <strong>${item.name}</strong></p>
+                    <button onclick="copyToClipboard('${item.number}')" class="px-4 py-1.5 bg-parchment-wax/20 hover:bg-parchment-wax/40 border border-parchment-wax text-parchment-wax font-cinzel text-xs rounded transition inline-flex items-center space-x-1.5">
+                        <i class="far fa-copy"></i>
+                        <span>Salin No. Rekening</span>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // Copy Text Helper
+        function copyToClipboard(text) {
+            const dummy = document.createElement("input");
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+            showToast("Nomor Rekening Berhasil Disalin!");
+        }
+
+        // Toast Notification Helper
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').innerText = msg;
+            toast.classList.remove('translate-x-full');
+
+            setTimeout(() => {
+                toast.classList.add('translate-x-full');
+            }, 3500);
+        }
+
+        // Escape HTML to prevent injection
+        function escapeHtml(str) {
+            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+    </script>
+</body>
+</html>
