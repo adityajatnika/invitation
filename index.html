@@ -187,7 +187,7 @@
     </div>
 
     <!-- Background Audio Element -->
-    <audio id="bg-music" loop controls volume="0.2">
+    <audio id="bg-music" loop>
         <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=wedding-march-royal-orchestra-112347.mp3" type="audio/mpeg">
     </audio>
 
@@ -619,6 +619,8 @@
             const mainContent = document.getElementById('main-content');
             const controls = document.getElementById('floating-controls');
             const bgMusic = document.getElementById('bg-music');
+
+            bgMusic.volume = 0.1;
 
             cover.classList.add('opacity-0', 'pointer-events-none');
             setTimeout(() => {
